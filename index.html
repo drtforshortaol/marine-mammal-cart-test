@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marine Mammal Cart</title>
+  <style>
+    body {
+      background: #07101f;
+      color: #e8e3dc;
+      font-family: Georgia, serif;
+      padding: 30px;
+    }
+
+    .app {
+      max-width: 700px;
+      margin: auto;
+      border-top: 6px solid #46c8f5;
+      padding: 30px;
+      background: #0b1324;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      color: #8fa8c5;
+      letter-spacing: 3px;
+    }
+
+    label {
+      display: block;
+      margin-top: 40px;
+      color: #8fa8c5;
+      letter-spacing: 5px;
+      font-size: 14px;
+    }
+
+    select {
+      width: 100%;
+      margin-top: 15px;
+      padding: 20px;
+      font-size: 26px;
+      background: #111a2c;
+      color: #f4efe7;
+      border: 3px solid #46c8f5;
+      border-radius: 14px;
+      font-family: Georgia, serif;
+    }
+
+    .card {
+      margin-top: 25px;
+      padding: 28px;
+      border-left: 6px solid #46c8f5;
+      background: #101a2d;
+      border-radius: 14px;
+    }
+
+    .question {
+      font-size: 26px;
+      font-style: italic;
+      color: #e8e3dc;
+    }
+
+    .answer {
+      font-size: 22px;
+      color: #b9c9df;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <h1>Marine Mammal Cart</h1>
+    <div class="subtitle">Presenter Narration Reference</div>
+
+    <label>SELECT SPECIMEN</label>
+
+    <select id="specimenSelect">
+      <option value="blueWhale">🐋 Blue Whale Ear Bone</option>
+      <option value="dolphinJaw">🐬 Dolphin Jaw</option>
+      <option value="orcaTooth">🐳 Orca Tooth</option>
+      <option value="sealFlipper">🦭 Elephant Seal Flipper</option>
+      <option value="otterSkull">🦦 Sea Otter Skull</option>
+    </select>
+
+    <div class="card">
+      <div class="question" id="question"></div>
+      <p class="answer" id="answer"></p>
+    </div>
+  </div>
+
+  <script>
+    const specimens = {
+      blueWhale: {
+        question: "Why do male blue whales sing?",
+        answer: "Male blue whales sing songs to find females over vast distances."
+      },
+      dolphinJaw: {
+        question: "What does a dolphin jaw tell us?",
+        answer: "A dolphin jaw helps show how sound travels through bone during echolocation."
+      },
+      orcaTooth: {
+        question: "What can an orca tooth reveal?",
+        answer: "An orca tooth can tell us about diet, age, and hunting behavior."
+      },
+      sealFlipper: {
+        question: "How do elephant seals use their flippers?",
+        answer: "Their flippers help them steer in water and move awkwardly on land."
+      },
+      otterSkull: {
+        question: "Why are sea otter teeth important?",
+        answer: "Sea otters use strong teeth to crush hard-shelled prey like clams and urchins."
+      }
+    };
+
+    const select = document.getElementById("specimenSelect");
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+
+    function updateCard() {
+      const item = specimens[select.value];
+      question.textContent = item.question;
+      answer.textContent = item.answer;
+    }
+
+    select.addEventListener("change", updateCard);
+    updateCard();
+  </script>
+</body>
+</html>
